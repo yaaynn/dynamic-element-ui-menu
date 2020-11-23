@@ -225,7 +225,8 @@ export const DynamicElementMenu = {
                     'class': iconOption
                 })
             }else if (typeof iconOption == 'object'){
-                return createElement(iconOption.name, iconOption.props, iconOption.children)
+                let children = this.checkChildren(iconOption)
+                return createElement(iconOption.name, iconOption.props, children)
             }
             return null;
         },
