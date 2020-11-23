@@ -153,7 +153,7 @@ export const DynamicElementMenu = {
                 defaultOpeneds: that.defaultOpeneds,
                 uniqueOpened: that.uniqueOpened,
                 menuTrigger: that.menuTrigger,
-                router: that.route,
+                router: that.router,
                 collapseTransition: that.collapseTransition
             },
             on: {
@@ -240,14 +240,14 @@ export const DynamicElementMenu = {
         createElMenuItemGroup(createElement, option){
             const
                 that = this,
-                children = that.checkChildren(option)
+                children = that.checkChildren(createElement, option)
 
-            createElement('el-menu-item-group',{props: {title: option.title}},[children])
+            return createElement('el-menu-item-group',{props: {title: option.title}},[children])
         },
         createElMenuItem(createElement, option) {
             const
                 that = this
-            createElement('el-menu-item', {props: {index: option.index, route: option.route, disable: options.disable}},
+            return createElement('el-menu-item', {props: {index: option.index, route: option.route, disable: option.disable}},
                 [createElement('template', {slot: 'title'},
                     [that.createIcon(createElement, option.icon), createElement('span', {slot: 'title'}, option.title)])])
         }
