@@ -1,19 +1,16 @@
 # dynamic-element-ui-menus
 
-## Project setup
+## IconOption
+### string
+-   使用默认的i标签绘制
+## JSON结构
+-   默认json结构
 ```
-npm install
+{icon: 'el-icon-location', title: 'Submenu1', index: '1', type: MenuItemType.ElSubmenu, children: [
+            {icon: 'el-icon-location', title: 'Submenu2', index: '1-1', type: MenuItemType.ElSubmenu, children: [
+                {title: 'Group', type: MenuItemType.ElMenuItemGroup, children: [
+                    {title: 'Item1', type: MenuItemType.ElMenuItem, route: '/home', index: '1-1-1'}
+                  ]}
+              ]}
+            ]}
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
