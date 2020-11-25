@@ -163,7 +163,7 @@ export const DynamicElementMenu = {
                 close: that.onClose
             },
             ref: 'menu'
-        }, [elMenuItem])
+        }, [...elMenuItem])
          return content;
     },
     methods: {
@@ -191,6 +191,7 @@ export const DynamicElementMenu = {
         // Menu Events End
         renderDom(createElement, options){
             const that = this
+            const elementDom = []
             if (Array.isArray(options)){
                 for (let i = 0; i < options.length; i++) {
                     const option = options[i]
@@ -198,15 +199,27 @@ export const DynamicElementMenu = {
                     //分类
                     switch (option.type){
                         case MenuItemType.ElSubmenu:
-                            return that.createElSubmenu(createElement,option)
+                            elementDom.push(that.createElSubmenu(createElement,option))
+                            break
                         case MenuItemType.ElMenuItemGroup:
-                            return that.createElMenuItemGroup(createElement, option)
+                            elementDom.push(that.createElMenuItemGroup(createElement, option))
+                            break
                         case MenuItemType.ElMenuItem:
-                            return that.createElMenuItem(createElement, option)
-
+                            elementDom.push(that.createElMenuItem(createElement, option))
+                            break
                     }
                 }
+            }else if(typeof options === 'object'){
+                switch (options.type){
+                    case MenuItemType.ElSubmenu:
+                        elementDom.push(that.createElSubmenu(createElement,option))
+                    case MenuItemType.ElMenuItemGroup:
+                        elementDom.push(that.createElMenuItemGroup(createElement, option))
+                    case MenuItemType.ElMenuItem:
+                        elementDom.push(that.createElMenuItem(createElement, option))
+                }
             }
+            return elementDom
         },
         checkChildren(createElement, option){
             if (!option){
@@ -236,14 +249,14 @@ export const DynamicElementMenu = {
                 children = that.checkChildren(createElement,option)
             return createElement('el-submenu', {props:{index: option.index}},[
                 createElement('template', {slot: 'title'},
-                    [that.createIcon(createElement, option.icon), createElement('span', {slot: 'title'}, option.title)]),children])
+                    [that.createIcon(createElement, option.icon), createElement('span', {slot: 'title'}, option.title)]),...children])
         },
         createElMenuItemGroup(createElement, option){
             const
                 that = this,
                 children = that.checkChildren(createElement, option)
 
-            return createElement('el-menu-item-group',{props: {title: option.title}},[children])
+            return createElement('el-menu-item-group',{props: {title: option.title}},[...children])
         },
         createElMenuItem(createElement, option) {
             const

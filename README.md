@@ -3,13 +3,21 @@
 
 ### 相关资料 [Element-UI](https://element.eleme.cn/2.14/#/zh-CN/component/menu)
 
+### 水群 [160191117](https://qm.qq.com/cgi-bin/qm/qr?k=Amgxlek89YtZFTUJvV-8JmvSYRMQUtT-&jump_from=webapi)
+
+- ![img](./qrcode.png)
+
 ### 关于版本
 
 - 版本采用[大版本.辅助版本.序列]的形式
-- 辅助版本为单数时为正式版本,为双数时为测试版本
+  - 辅助版本为单数时为正式版本,为双数时为测试版本 
 - 测试版本可能只是我为了调试或者发布的版本,请不要贸然使用.
 
 ### 更新日志
+
+#### 2020-11-25
+
+- [BUG] 忘记解除循环限制,导致只能执行一次
 
 #### 2020-11-24
 

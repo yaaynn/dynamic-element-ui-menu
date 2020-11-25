@@ -30,6 +30,13 @@ export default {
                     {title: 'Item1', icon: 'el-icon-location', type: MenuItemType.ElMenuItem, route: '/home', index: '1-1-1'}
                   ]}
               ]}
+        ]},
+        {icon: 'el-icon-location', title: 'Submenu1', index: '2', type: MenuItemType.ElSubmenu, children: [
+            {icon: 'el-icon-location', title: 'Submenu2', index: '2-1', type: MenuItemType.ElSubmenu, children: [
+                {title: 'Group', type: MenuItemType.ElMenuItemGroup, children: [
+                    {title: 'Item1', icon: 'el-icon-location', type: MenuItemType.ElMenuItem, route: '/home', index: '2-1-1'}
+                  ]}
+              ]}
             ]}
       ]
     }
