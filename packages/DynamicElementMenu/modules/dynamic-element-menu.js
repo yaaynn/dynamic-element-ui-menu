@@ -134,6 +134,18 @@ export const DynamicElementMenu = {
             type: Boolean,
             default: true
         },
+        width: {
+            type: String,
+            default: '240px'
+        },
+        iconMaxWidth: {
+            type: String,
+            default: '32px'
+        },
+        iconMinWidth: {
+            type: String,
+            default: '23px'
+        }
         //'class': String,
         //style: String
     },
@@ -142,7 +154,7 @@ export const DynamicElementMenu = {
         const elMenuItem = this.renderDom(createElement, this.menus);
         const content = createElement("el-menu", {
             'class': that['class'],
-            style: that.style,
+            style: that.style + 'width:'+this.width+';',
             props: {
                 mode: that.mode,
                 collapse: that.collapse,
@@ -233,9 +245,13 @@ export const DynamicElementMenu = {
             return children
         },
         createIcon(createElement, iconOption) {
+            const self = this
             if (typeof iconOption == 'string'){
                 return createElement('i', {
-                    'class': iconOption
+                    'class': iconOption,
+                    style: {
+                        'font-size': self.collapse ? self.iconMaxWidth : self.iconMinWidth
+                    }
                 })
             }else if (typeof iconOption == 'object'){
                 let children = this.checkChildren(iconOption)

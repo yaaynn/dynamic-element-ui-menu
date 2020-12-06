@@ -48,6 +48,14 @@ Vue.use(DynamicElementUiMenu)
 - menus是主要参数,负责配置菜单
 - 其他参数请参考官方文档,我也是按照官方文档来进行开发的
 
+##### iconMaxWidth `string` default: `32px`
+
+		-	图标最大(收缩)大小
+
+##### iconMinWidth `string` default: `23px`
+
+		-	图标最小(扩展)大小
+
 #### menus
 
 ```javascript
